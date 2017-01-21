@@ -17,7 +17,7 @@ install:
 	mkdir -p $(DESTDIR)/lib
 	mkdir -p $(DESTDIR)/include
 	cp lib/libemu3d.a $(DESTDIR)/lib/libemu3d.a
-	cp inc/emu3d.hpp $(DESTDIR)/inc/emu3d.hpp
+	cp inc/emu3d.hpp $(DESTDIR)/include/emu3d.hpp
 uninstall:
 	rm -f $(DESTDIR)/lib/libemu3d.a
-	rm -f $(DESTDIR)/inc/emu3d.hpp
+	rm -f $(DESTDIR)/include/emu3d.hpp
