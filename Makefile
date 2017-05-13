@@ -1,4 +1,5 @@
 DESTDIR=/usr/local
+EINT_T_INC=/usr/local/include
 ARC=
 build: src/emu3d.o
 	ar rcs src/libemu3d.a src/emu3d.o
@@ -6,7 +7,7 @@ build: src/emu3d.o
 	cp src/emu3d.hpp inc/emu3d.hpp
 
 src/emu3d.o: src/emu3d.cpp
-	g++ -c -std=c++11 $(ARC) -o src/emu3d.o src/emu3d.cpp 
+	g++ -c -std=c++11 $(ARC) -I$(EINT_T_INC) -o src/emu3d.o src/emu3d.cpp
 clean:
 	rm -f lib/*.a
 	rm -f inc/*.hpp
