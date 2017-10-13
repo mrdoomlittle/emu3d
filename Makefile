@@ -1,24 +1,24 @@
-DESTDIR=/usr/local
-EINT_T_INC=/usr/local/include
+INSTALL_DIR=/usr/local
+MDLINT_INC=/usr/local/include
 ARC=
 build: src/emu3d.o
-	ar rcs src/libemu3d.a src/emu3d.o
-	cp src/libemu3d.a lib/libemu3d.a
-	cp src/emu3d.hpp inc/emu3d.hpp
+	ar rcs libmdl-emu3d.a src/emu3d.o
+	cp libmdl-emu3d.a lib/libmdl-emu3d.a
+	cp src/emu3d.hpp inc/mdl
 
 src/emu3d.o: src/emu3d.cpp
-	g++ -c -std=c++11 $(ARC) -I$(EINT_T_INC) -o src/emu3d.o src/emu3d.cpp
+	g++ -c -std=c++11 -D__$(ARC) -I$(MDLINT_INC) -o src/emu3d.o src/emu3d.cpp
 clean:
 	rm -f lib/*.a
-	rm -f inc/*.hpp
+	rm -f inc/mdl/*.hpp
 	rm -f src/*.o
-	rm -f src/*.a
+	rm -f *.a
 install:
-	mkdir -p $(DESTDIR)/bin
-	mkdir -p $(DESTDIR)/lib
-	mkdir -p $(DESTDIR)/include
-	cp lib/libemu3d.a $(DESTDIR)/lib/libemu3d.a
-	cp inc/emu3d.hpp $(DESTDIR)/include/emu3d.hpp
+	mkdir -p $(INSTALL_DIR)/lib
+	mkdir -p $(INSTALL_DIR)/include
+	mkdir -p $(INSTALL_DIR)/include/mdl
+	cp lib/libemu3d.a $(INSTALL_DIR)/lib/libemu3d.a
+	cp inc/mdl/emu3d.hpp $(INSTALL_DIR)/include/mdl
 uninstall:
-	rm -f $(DESTDIR)/lib/libemu3d.a
-	rm -f $(DESTDIR)/include/emu3d.hpp
+	rm -f $(INSTALL_DIR)/lib/libmdl-emu3d.a
+	rm -rf $(INSTALL_DIR)/include/mdl
